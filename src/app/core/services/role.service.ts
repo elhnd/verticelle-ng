@@ -20,4 +20,8 @@ export class RoleService {
     get isUser(): boolean {
         return this.roles.includes(Roles.USER);
     }
+
+    get isApprenant(): boolean {
+        return this.roles.includes(Roles.APPRENANT);
+    }
 }

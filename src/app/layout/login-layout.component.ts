@@ -6,6 +6,6 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-login-layout',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './login-layout.component.html'
+  template: '<router-outlet></router-outlet>'
 })
 export class LoginLayoutComponent {}

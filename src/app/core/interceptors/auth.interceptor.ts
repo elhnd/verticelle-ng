@@ -19,7 +19,7 @@ const BEARER = 'Bearer ';
 export class AuthInterceptor implements HttpInterceptor {
 
     private _authService    = inject(AuthService);
-    private _tokenService   = inject(TokenService)
+    private _tokenService   = inject(TokenService);
     private _router         = inject(Router);
 
     intercept(
