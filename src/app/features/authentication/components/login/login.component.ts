@@ -7,6 +7,7 @@ import { AuthenticationFormService } from '@features/authentication/services/aut
 import { DynamicFieldComponent } from '@shared/components/form/dynamic-field.component';
 import { FormBaseField } from '@core/models/form/fields';
 import { AuthService } from '@core/services/auth.service';
+import { RoleService } from '@core/services/role.service';
 
 @Component({
   selector: 'app-login',
@@ -24,13 +25,13 @@ import { AuthService } from '@core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  test = false;
   form!   : FormGroup;
   fields! : FormBaseField<string>[];
 
   private _authService                = inject(AuthService);
   private _authFormService            = inject(AuthenticationFormService);
   private _router                     = inject(Router);
+  private _roleService                = inject(RoleService);
 
   constructor() {
     this.fields = this._authFormService.getFormFields();
@@ -40,12 +41,12 @@ export class LoginComponent implements OnInit {
     this.form = this._authFormService.getFormGroup();
   }
 
-  connexion () {
-    console.log(this.form.getRawValue());
-    
+  connexion () {    
     this._authService.login(this.form.getRawValue())
-    .subscribe( tes=> { 
-      this._router.navigateByUrl('/dashboard/security');
+    .subscribe( () => { 
+      if(this._roleService.isUser()) {
+        this._router.navigateByUrl('app/registration')
+      }
     });
   }
 

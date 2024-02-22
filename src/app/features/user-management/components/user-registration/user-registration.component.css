@@ -1,0 +1,14 @@
+.deviance-container {
+    margin: auto; 
+    width: 75%; 
+    padding: 10px;
+}
+
+app-form {
+    width: 50%;
+    display: inline-block;
+}
+
+.toolbar {
+    margin-bottom: 20px;
+}

@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from '@shared/components/header/header.component';
 
 @Component({
-  selector: 'app-home-layout',
+  selector: 'app-layout',
   standalone: true,
   imports: [CommonModule, RouterOutlet,MatGridListModule, MatSidenavModule, MatButtonModule, HeaderComponent],
   template: `
@@ -18,6 +18,6 @@ import { HeaderComponent } from '@shared/components/header/header.component';
   `,
   styles: ''
 })
-export class GameLayoutComponent  {
+export class AppLayoutComponent  {
 
 }

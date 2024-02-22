@@ -30,7 +30,7 @@ export class MenuPanelComponent {
 
   displayMenu(menu: Menu){    
     if(menu.roles) {
-      return menu.roles?.some(role => this._roleService.roles.includes(role));
+      return menu.roles?.some(role => this._roleService.allRoles().includes(role));
     }
     return true;
   }

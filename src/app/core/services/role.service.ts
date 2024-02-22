@@ -9,19 +9,19 @@ export class RoleService {
 
     private _tokenService   = inject(TokenService);
 
-    get roles(): string[] {
+    allRoles(): string[] {
         return this._tokenService.getDecodeToken()?.roles || [];
     }
 
-    get isAdministrator(): boolean {        
-        return this.roles.includes(Roles.ADMINISTRATOR);
+    isAdministrator(): boolean {        
+        return this.allRoles().includes(Roles.ADMINISTRATOR);
     }
 
-    get isUser(): boolean {
-        return this.roles.includes(Roles.USER);
+    isUser(): boolean {
+        return this.allRoles().includes(Roles.USER);
     }
 
-    get isApprenant(): boolean {
-        return this.roles.includes(Roles.APPRENANT);
+    isApprenant(): boolean {
+        return this.allRoles().includes(Roles.APPRENANT);
     }
 }

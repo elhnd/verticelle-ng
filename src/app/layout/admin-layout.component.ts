@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from '@shared/components/header/header.component';
 
 @Component({
-  selector: 'app-home-layout',
+  selector: 'app-admin-layout',
   standalone: true,
   imports: [CommonModule, RouterOutlet,MatGridListModule, MatSidenavModule, MatButtonModule, HeaderComponent],
   template: `
