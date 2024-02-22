@@ -3,7 +3,7 @@ import { LoginLayoutComponent } from './layout/login-layout.component';
 import { AdminLayoutComponent } from './layout/admin-layout.component';
 import { AuthService } from '@core/services/auth.service';
 import { AuthGuard } from '@core/guards/auth.guard';
-import { GameLayoutComponent } from '@layout/game-layout.component';
+import { AppLayoutComponent } from '@layout/app-layout.component';
 
 export const routes: Routes = [
     {
@@ -12,36 +12,53 @@ export const routes: Routes = [
         children: [
             { 
                 path: 'login',
-                loadComponent: () => import('./features/authentication/components/login/login.component').then( c => c.LoginComponent)
+                loadComponent: () => import('./features/authentication/components/login/login.component').then(c => c.LoginComponent)
+            },
+            { 
+                path: 'reset-password',
+                loadComponent: () => import('./features/authentication/components/reset-password/reset-password.component').then(c => c.ResetPasswordComponent)
             }
         ] 
     },
     { 
         path: 'admin',
         component: AdminLayoutComponent,
-        // canActivate: [() => AuthGuard()],
-        // canActivateChild: [() => AuthGuard()],
-        // children: [
-        //     {
-        //         path: 'dashboard',
-        //     },
-        //     {
-        //         path:'**', redirectTo: 'dashboard', pathMatch: 'full'
-        //     }
-        // ]
+        canActivateChild: [() => AuthGuard()],
+        children: [
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./features/dashboard/components/admin-dashboard/admin-dashboard.component').then(c => c.AdminDashboardComponent)
+            },
+            {
+                path: 'user-list',
+                loadComponent: () => import('./features/user-management/components/user-list/user-list.component').then(c => c.UserListComponent)
+            },
+            {
+                path:'**', redirectTo: 'dashboard', pathMatch: 'full'
+            }
+        ]
     },
     { 
-        path: 'game',
-        component: GameLayoutComponent,
+        path: 'app',
+        component: AppLayoutComponent,
         // canActivate: [() => AuthGuard()],
-        // canActivateChild: [() => AuthGuard()],
-        // children: [
-        //     {
-        //         path: 'dashboard',
-        //     },
-        //     {
-        //         path:'**', redirectTo: 'dashboard', pathMatch: 'full'
-        //     }
-        // ]
+        canActivateChild: [() => AuthGuard()],
+        children: [
+            {
+                path: 'registration',
+                loadComponent: () => import('./features/user-management/components/user-registration/user-registration.component').then(c => c.UserRegistrationComponent)
+            },
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./features/dashboard/components/user-dashboard/user-dashboard.component').then(c => c.UserDashboardComponent)
+            },
+            {
+                path: 'user-profile',
+                loadChildren: () => import('./features/user-management/components/user-profile/user-profile.component').then(c => c.UserProfileComponent)
+            },
+            {
+                path:'**', redirectTo: 'dashboard', pathMatch: 'full'
+            }
+        ]
     }
 ];
