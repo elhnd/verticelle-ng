@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { MatGridListModule } from '@angular/material/grid-list';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from '@shared/components/header/header.component';
 
 @Component({
-  selector: 'app-admin-layout',
+  selector: 'app-layout',
   standalone: true,
   imports: [CommonModule, RouterOutlet,MatGridListModule, MatSidenavModule, MatButtonModule, HeaderComponent],
   template: `
@@ -18,6 +18,6 @@ import { HeaderComponent } from '@shared/components/header/header.component';
   `,
   styles: ''
 })
-export class AdminLayoutComponent  {
+export class AppLayoutComponent  {
 
 }
