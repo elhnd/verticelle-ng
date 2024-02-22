@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="toolbar">
+    <span>Resgitration Form</span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+
+<div class="deviance-container">
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title>Jizo form</mat-card-title>
+    </mat-card-header>
+
+    <form  [formGroup]="form">
+      <mat-card-content> 
+        @for (field of formFields; track field) {
+          <app-form [field]="field" [form]="form" />
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button type="submit" [disabled]="!form.valid" mat-button>ENREGISTRER</button>
+        <button type="button" mat-button>ANNULER</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
