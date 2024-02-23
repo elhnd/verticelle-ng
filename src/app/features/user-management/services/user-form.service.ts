@@ -3,14 +3,13 @@ import { Injectable } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormBaseField, FormCheckboxField, FormDateField, FormSelectField, FormTextField } from "@core/models/form/fields";
 import { FormServiceInterface } from "@core/models/form/form.service.interface";
+import { Observable, map, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
 })
-export class UserFormService implements FormServiceInterface {
-
-  getFormFields(): FormBaseField<string | number | boolean | NumberInput>[] {
-    const form: FormBaseField<string | number | boolean | NumberInput>[] = [
+export class UserFormService {
+    private form: FormBaseField<string | number | boolean | NumberInput>[] = [
 
         new FormTextField({
             key: 'firstName',
@@ -108,18 +107,14 @@ export class UserFormService implements FormServiceInterface {
             key: 'roles',
             label: 'Roles',
             options: [
-              {key: 'Yes', value: 'YES'},
-              {key: 'No', value: 'NO'}
+              {key: 'Administrateur', value: 'ROLE_ADMINISTRATOR'},
+              {key: 'Utilisateur', value: 'ROLE_USER'}
             ],
             order: 6
         }),
         new FormCheckboxField({
             key: 'isActive',
             label: 'Status',
-            options: [
-              {key: 'Yes', value: 'YES'},
-              {key: 'No', value: 'NO'}
-            ],
             order: 7
         }),
         new FormDateField({
@@ -128,14 +123,16 @@ export class UserFormService implements FormServiceInterface {
             order: 4
         }),
     ];
-    return form.sort((a, b) => a.order - b.order);
-  }
 
-  getFormGroup(): FormGroup {
-    const group: any = {};
-    this.getFormFields().forEach(field => {
-      group[field.key] = new FormControl(field.value || '', field.validations.constraints)
-    });
-    return new FormGroup(group);
-  }
+    getFormFields(): Observable<FormBaseField<string | number | boolean | NumberInput>[]> {
+        return of(this.form.sort((a, b) => a.order - b.order));
+    }
+
+    getFormGroup(): Observable<FormGroup> {
+        const group: {[key:string]: FormControl} = {};
+        this.form.forEach(field => {
+            group[field.key] = new FormControl(field.value || '', field.validations.constraints)
+        });
+        return of(new FormGroup(group));
+    }
 }

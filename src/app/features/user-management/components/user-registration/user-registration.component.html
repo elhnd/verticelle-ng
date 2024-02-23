@@ -9,14 +9,14 @@
       <mat-card-title>Jizo form</mat-card-title>
     </mat-card-header>
 
-    <form  [formGroup]="form">
+    <form  [formGroup]="form()">
       <mat-card-content> 
-        @for (field of formFields; track field) {
-          <app-form [field]="field" [form]="form" />
+        @for (field of formFields(); track field) {
+          <app-form [field]="field" [form]="form()" />
         }
       </mat-card-content>
       <mat-card-actions align="end">
-        <button type="submit" [disabled]="!form.valid" mat-button>ENREGISTRER</button>
+        <button type="submit" [disabled]="!form().valid" mat-button>ENREGISTRER</button>
         <button type="button" mat-button>ANNULER</button>
       </mat-card-actions>
     </form>
