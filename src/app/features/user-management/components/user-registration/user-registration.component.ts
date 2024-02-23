@@ -1,9 +1,9 @@
 import { Component, DestroyRef, Input, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormBaseField } from '@core/models/form/fields';
 import { UserFormService } from '@features/user-management/services/user-form.service';
 import { UserService } from '@features/user-management/services/user.service';
 import { DynamicFieldComponent } from '@shared/components/form/dynamic-field.component';
@@ -24,24 +24,30 @@ import { DynamicFieldComponent } from '@shared/components/form/dynamic-field.com
 export class UserRegistrationComponent {
 
   @Input() id!: number;
-  formFields  : FormBaseField<any>[];
-  form!       : FormGroup;
 
   private _userFormService  = inject(UserFormService);
   private _userService      = inject(UserService);
   private _destroyRef       = inject(DestroyRef);
 
-
-  constructor(){
-    this.formFields = this._userFormService.getFormFields();
-  }
+  formFields  = toSignal(this._userFormService.getFormFields());
+  form        = toSignal(this._userFormService.getFormGroup(), {initialValue: new FormGroup({})});
 
   ngOnInit(): void {
-    this.form = this._userFormService.getFormGroup();
-
     if(this.id) {
       //this.getDeviance();
     }
+  }
+
+  onFileSelected(event: any) {
+    const file = (event.target as HTMLInputElement);
+    if(file){
+      this.form().patchValue({ file: file.files![0]});
+    }
+  }
+
+  saveUser()
+  {
+    this._userService.saveUser(this.form().getRawValue() )
   }
 
 }
