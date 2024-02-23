@@ -4,4 +4,3 @@ export interface UserToken {
     roles?: string[];
     username?: string;
 }
-  
