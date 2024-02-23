@@ -13,7 +13,7 @@ export const apiUrl = {
 
   user: {
     getUsers: baseUrl + '/api/v1/',
-    addUser: baseUrl + '/api/v1/'
+    addUser: baseUrl + '/users/save'
   },
 
   crud: baseUrl+'/employees',

@@ -5,6 +5,7 @@ import { FormBaseField } from '@core/models/form/fields';
 import { FieldBuilder } from './field.builder';
 import { FormFieldType } from '@core/models/form/form-field-type.enum';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NumberInput } from '@angular/cdk/coercion';
 
 @Component({
   standalone: true,
@@ -16,7 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class DynamicFieldComponent implements OnInit, OnDestroy {
 
   @Input() form?: FormGroup;
-  @Input() field!: FormBaseField<string | number | boolean>;
+  @Input() field!: FormBaseField<string | number | boolean | NumberInput>;
   
   @Output() files: EventEmitter<FileList> = new EventEmitter<FileList>();
 
