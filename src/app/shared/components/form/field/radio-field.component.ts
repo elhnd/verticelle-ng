@@ -7,10 +7,14 @@ import { BaseFieldComponent } from './base-field.component';
   standalone: true,
   selector: 'app-radio',
   template: `
-    <mat-radio-group [formGroup]="form" [id]="field.key" [formControlName]="field.key" [attr.aria-label]="field.label">
+    <mat-radio-group 
+      [formGroup]="form"
+      [id]="field.key"
+      [formControlName]="field.key"
+      [attr.aria-label]="field.label">
       @if (field.options) {
-        @for (opt of field.options; track opt) {
-          <mat-radio-button [value]="opt.key">{{ opt.value }}</mat-radio-button>
+        @for (option of field.options; track option) {
+          <mat-radio-button [value]="option.key">{{ option.value }}</mat-radio-button>
         }
       }
     </mat-radio-group>

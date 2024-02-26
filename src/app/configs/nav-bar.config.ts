@@ -1,5 +1,6 @@
 import { Menu } from "@core/models/menu.interface";
 import { Roles } from "@core/models/roles.enum";
+import { appUrl } from "./app-url.config";
 
 export const navItems: Menu[] = [
     {   
@@ -11,7 +12,9 @@ export const navItems: Menu[] = [
                     { label: '', link: '' },
                     { label: '', link: '' },
                     { label: '', link: '' },
-                    { label: '', link: '' ,
+                    {   
+                        label: '',
+                        link: '',
                         roles: [
                             Roles.ADMINISTRATOR
                         ] 
@@ -21,7 +24,7 @@ export const navItems: Menu[] = [
         { label: 'App', link: '' },
       ],
     },
-    { label: 'Test User', icon: 'file_download', link:'/test/list' },
+    { label: 'Test User', icon: 'file_download', link: appUrl.user.registration },
 ];
 
 

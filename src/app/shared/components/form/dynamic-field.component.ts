@@ -1,4 +1,14 @@
-import { Component, Input, OnInit, OnDestroy, ViewChild, Output, EventEmitter, inject, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
+import { 
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  Output,
+  EventEmitter,
+  inject,
+  DestroyRef,
+  ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DynamicFieldDirective } from '@shared/directives/dynamic-field.directive';
 import { FormBaseField } from '@core/models/form/fields';
@@ -16,10 +26,10 @@ import { NumberInput } from '@angular/cdk/coercion';
 })
 export class DynamicFieldComponent implements OnInit, OnDestroy {
 
-  @Input() form?: FormGroup;
-  @Input() field!: FormBaseField<string | number | boolean | NumberInput>;
+  @Input() form?  : FormGroup;
+  @Input() field! : FormBaseField<string | number | boolean | NumberInput>;
   
-  @Output() files: EventEmitter<FileList> = new EventEmitter<FileList>();
+  @Output() files : EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @ViewChild(DynamicFieldDirective, {static: true}) dynamicField!: DynamicFieldDirective;  
   private _destroyRef = inject(DestroyRef);
@@ -43,8 +53,9 @@ export class DynamicFieldComponent implements OnInit, OnDestroy {
       .pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(
         (files: FileList) => {
-        this.files.emit(files);
-      });
+          this.files.emit(files);
+        }
+      );
     }
   }
 

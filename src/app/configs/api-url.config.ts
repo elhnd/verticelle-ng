@@ -7,15 +7,12 @@ const baseUrl = environment.baseUrl;
 
 export const apiUrl = {
   auth: {
-    login: baseUrl + '/login',
+    login: baseUrl + '/api/login',
     forgot: baseUrl + '/api/v1/auth/forgot',
   },
-
   user: {
     getUsers: baseUrl + '/api/v1/',
     addUser: baseUrl + '/users/save'
   },
-
   crud: baseUrl+'/employees',
-
 };

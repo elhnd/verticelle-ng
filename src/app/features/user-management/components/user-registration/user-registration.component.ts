@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserFormService } from '@features/user-management/services/user-form.service';
 import { UserService } from '@features/user-management/services/user.service';
 import { DynamicFieldComponent } from '@shared/components/form/dynamic-field.component';
+import { response } from 'express';
 
 @Component({
   selector: 'app-user-registration',
@@ -24,7 +25,7 @@ import { DynamicFieldComponent } from '@shared/components/form/dynamic-field.com
 export class UserRegistrationComponent {
 
   @Input() id!: number;
-
+  files!: FileList;
   private _userFormService  = inject(UserFormService);
   private _userService      = inject(UserService);
   private _destroyRef       = inject(DestroyRef);
@@ -34,20 +35,19 @@ export class UserRegistrationComponent {
 
   ngOnInit(): void {
     if(this.id) {
-      //this.getDeviance();
+      //this.getDeviance(); 
     }
   }
 
-  onFileSelected(event: any) {
-    const file = (event.target as HTMLInputElement);
-    if(file){
-      this.form().patchValue({ file: file.files![0]});
-    }
+  getFiles(files: FileList) {
+    this.files = files;
   }
 
-  saveUser()
-  {
-    this._userService.saveUser(this.form().getRawValue() )
+  saveUser(){
+    console.log(this.form().getRawValue(), this.files);
+    this._userService.saveUser(this.form().getRawValue(), this.files)
+    .subscribe((response)=>{console.log(response);
+    })
   }
 
 }

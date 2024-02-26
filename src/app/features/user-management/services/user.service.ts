@@ -12,11 +12,22 @@ export class UserService {
 
     constructor() {}
 
-    saveUser(user: User)
+    saveUser(user: User, files: FileList)
     {
         const formData = new FormData();
-        formData.append('profileImage', user.profileImage);
-        formData.append('user', JSON.stringify(user));
+
+        if (files && files.length > 0) {
+            formData.append('profileImage', files[0]);
+        }
+      
+        Object.keys(user).forEach(key => {
+            let value = user[key as keyof User];
+            if (typeof value === 'boolean') {
+                value = JSON.stringify(value);
+            }
+            formData.append(key, value);
+        });
+            
         return this._http.post(apiUrl.user.addUser, formData)
     }
 }

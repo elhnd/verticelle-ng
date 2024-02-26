@@ -6,13 +6,13 @@
 <div class="deviance-container">
   <mat-card >
     <mat-card-header>
-      <mat-card-title>Jizo form</mat-card-title>
+      <mat-card-title>User form</mat-card-title>
     </mat-card-header>
 
-    <form  [formGroup]="form()">
+    <form  [formGroup]="form()" (submit)="saveUser()">
       <mat-card-content> 
         @for (field of formFields(); track field) {
-          <app-form [field]="field" [form]="form()" />
+          <app-form [field]="field" [form]="form()" (files)="getFiles($event)" />
         }
       </mat-card-content>
       <mat-card-actions align="end">

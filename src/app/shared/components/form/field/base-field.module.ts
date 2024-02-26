@@ -7,30 +7,30 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 
 export const MY_FORMATS = {
-    parse: {
-      dateInput: 'MM/YYYY',
-    },
-    display: {
-      dateInput: 'MM/YYYY',
-      monthYearLabel: 'MMM YYYY',
-      dateA11yLabel: 'LL',
-      monthYearA11yLabel: 'MMMM YYYY',
-    },
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
 };
 
 const modules = [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule
+  ReactiveFormsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonModule
 ];
 
 @NgModule({
-    // imports: modules,
-    exports: modules,
-    providers: [
-        { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
-    ]
+  // imports: modules,
+  exports: modules,
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+  ]
 })
 export class BaseFieldModule {}

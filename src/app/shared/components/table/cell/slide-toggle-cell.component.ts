@@ -6,9 +6,7 @@ import { BaseCellComponent } from './base-cell.component';
   standalone: true,
   selector: 'app-slide-toggle-cell',
   template: `
-    <mat-slide-toggle 
-      [name]="element.dataKey"
-      ></mat-slide-toggle>
+    <mat-slide-toggle [name]="element.dataKey"></mat-slide-toggle>
   `,
   imports: [
     MatSlideToggleModule

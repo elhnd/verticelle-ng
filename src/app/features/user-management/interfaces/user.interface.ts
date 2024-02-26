@@ -9,5 +9,5 @@ export interface User
     username    : string;
     isActive    : boolean;
     roles       : string;
-    profileImage: File;
+    profileImage: string;
 }

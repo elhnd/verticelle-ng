@@ -11,8 +11,8 @@ import { BaseFieldComponent } from './base-field.component';
       <mat-label [attr.for]="field.key">{{ field.label }}</mat-label>
       <mat-select [id]="field.key" [formControlName]="field.key">
         <mat-option>Clear</mat-option>
-        @for (opt of field.options; track opt) {
-          <mat-option [value]="opt.key">{{ opt.value }}</mat-option>
+        @for (option of field.options; track option) {
+          <mat-option [value]="option.key">{{ option.value }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
