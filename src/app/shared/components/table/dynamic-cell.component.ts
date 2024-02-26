@@ -24,8 +24,8 @@ export class DynamicCellComponent {
   }
 
   loadComponent() {
-    const componentType = new CellBuilder(this.tableColumn.type).build();
-    const viewContainerRef = this.dynamicField.viewContainerRef;
+    const componentType     = new CellBuilder(this.tableColumn.type).build();
+    const viewContainerRef  = this.dynamicField.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent<CellComponent>(componentType);

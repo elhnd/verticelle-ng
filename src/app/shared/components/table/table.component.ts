@@ -1,4 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { 
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
@@ -31,17 +37,17 @@ import { IResponse } from '@core/models/response.interface';
 })
 export class TableComponent<T=any> implements OnInit, AfterViewInit {
 
-  tableDataSource: MatTableDataSource<any[]>  = new MatTableDataSource<any[]>([]);
+  tableDataSource : MatTableDataSource<any[]>  = new MatTableDataSource<any[]>([]);
   displayedColumns: string[] = [];
-  pageDataInfos: {} = {}
+  pageDataInfos   : {}       = {}
 
   @ViewChild(MatPaginator, {static: false}) matPaginator!: MatPaginator;
 
-  @Input() isPageable: boolean = false;
-  @Input() isFilterable: boolean = false;
-  @Input() tableColumns: TableColumn[] = [];
-  @Input() paginationSizes: number[] = [10, 15, 20];
-  @Input() defaultPageSize: number = this.paginationSizes[1];
+  @Input() isPageable     : boolean       = false;
+  @Input() isFilterable   : boolean       = false;
+  @Input() tableColumns   : TableColumn[] = [];
+  @Input() paginationSizes: number[]      = [10, 15, 20];
+  @Input() defaultPageSize: number        = this.paginationSizes[1];
   
 
   @Input() set tableData(data: any[]) {

@@ -5,10 +5,15 @@ import { BaseCellComponent } from './base-cell.component';
   standalone: true,
   selector: 'app-image-cell',
   template: `
-    <img [src]="" style="width:50px; height:auto;" />
+    <img [src]="" class="image" />
   `,
   imports: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
-  // styleUrl: ''
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: `
+    .image {
+      width:50px;
+      height:auto;
+    }
+  `
 })
 export class ImageCellComponent extends BaseCellComponent {}
