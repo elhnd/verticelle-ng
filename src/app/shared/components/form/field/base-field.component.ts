@@ -12,8 +12,8 @@ import { BaseFieldModule } from "./base-field.module";
 })
 export class BaseFieldComponent<T> {
 
-    @Input() field!: FormBaseField<T>;
-    @Input() form!: FormGroup;
+    @Input() field! : FormBaseField<T>;
+    @Input() form!  : FormGroup;
 
     get errors() {   
 

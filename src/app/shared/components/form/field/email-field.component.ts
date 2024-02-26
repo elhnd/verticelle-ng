@@ -8,7 +8,9 @@ import { BaseFieldComponent } from './base-field.component';
   template: `
     <mat-form-field [formGroup]="form" class="field" appearance="outline">
       <mat-label [attr.for]="field.key">{{ field.label }}</mat-label>
-      <input matInput [placeholder]="field.placeholder" 
+      <input 
+        matInput 
+        [placeholder]="field.placeholder" 
         [formControlName]="field.key" 
         [id]="field.key" 
         [type]="field.type">
