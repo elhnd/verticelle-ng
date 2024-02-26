@@ -28,7 +28,7 @@ export class HeaderComponent {
 
   private _roleService = inject(RoleService);
 
-  navItems: Menu[] = navItems;
+  navItems      : Menu[] = navItems;
   paramsNavItems: Menu[] = paramsNavItems;
 
   displayMenu(menu: Menu){    
