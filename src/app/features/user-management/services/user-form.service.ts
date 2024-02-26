@@ -1,7 +1,7 @@
 import { NumberInput } from "@angular/cdk/coercion";
 import { Injectable } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { FormBaseField, FormCheckboxField, FormDateField, FormSelectField, FormTextField } from "@core/models/form/fields";
+import { FormBaseField, FormCheckboxField, FormDateField, FormFileField, FormImageField, FormSelectField, FormTextField } from "@core/models/form/fields";
 import { FormServiceInterface } from "@core/models/form/form.service.interface";
 import { Observable, map, of } from "rxjs";
 
@@ -122,6 +122,10 @@ export class UserFormService {
             label: 'Date de naissance',
             order: 4
         }),
+        new FormFileField({
+            key: 'profileImage',
+            label: 'Image de profile'
+        })
     ];
 
     getFormFields(): Observable<FormBaseField<string | number | boolean | NumberInput>[]> {
