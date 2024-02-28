@@ -4,18 +4,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TokenService } from '@core/services/token.service';
 
 
-export const AuthGuard = () => {
+export const authGuard = () => {
 
-    const _router           = inject(Router);
-    const _snackBar         = inject(MatSnackBar);
-    const _tokenService     = inject(TokenService);
-
-    if(_tokenService.isTokenExpired()) {
-        _snackBar.open(
+    const router           = inject(Router);
+    const snackBar         = inject(MatSnackBar);
+    const tokenService     = inject(TokenService);
+    console.log("test guard");
+    console.log(tokenService.isTokenExpired());
+    if(tokenService.isTokenExpired()) {
+        console.log("test guard");
+        
+        snackBar.open(
             'Your session has expired. Please log in again.',
             '❌'
         );
-        _router.navigateByUrl('auth/login');
+        router.navigateByUrl('auth/login');
 
         return false;
     } 
